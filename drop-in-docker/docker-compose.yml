@@ -1,0 +1,29 @@
+version: '3.4'
+services:
+  mysql:
+    image: mysql:5.7.32
+    env_file:
+      - ./env/mysql.env
+    ports:
+      - $MYSQL_PORT:3306
+    volumes:
+      - ./vols/mysql/data/:/var/lib/mysql/
+  adminer:
+    image: adminer:4.7.8-standalone
+    # env_file:
+    #   - ./env/adminer.env
+    ports:
+      - $ADMINER_PORT:8080
+  app:
+    image: $APP_NAME
+    build:
+      context: .
+      dockerfile: ./Dockerfiles/app.Dockerfile
+    container_name: "blog-app"
+    #  args:
+    #   UID: $UID
+    ports:
+      - 8000:8000
+    volumes:
+      - $APP_VOLUMES_SRC:/var/www/html/
+      - ./vols/app/docker-user-home/:/home/www-data/
