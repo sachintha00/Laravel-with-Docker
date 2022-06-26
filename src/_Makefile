@@ -1,6 +1,0 @@
-up:
-	docker-compose up --build --remove-orphans -d
-down:
-	docker-compose down --remove-orphans
-# shell:
-# 	docker exec -u $(UID):$(UID) laravel-test-blog_main sh

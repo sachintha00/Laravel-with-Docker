@@ -1,6 +1,6 @@
 FROM php:8.0.0-fpm-alpine3.12
-WORKDIR /app
-COPY . .
+# WORKDIR /app
+# COPY . .
 # ARG UID
 RUN apk --update add shadow
 # RUN usermod -u $UID www-data && groupmod -g $UID www-data
